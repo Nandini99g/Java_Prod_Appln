@@ -1,0 +1,10 @@
+resource "aws_lb" "internal_nlb" {
+  name               = "app-internal-nlb" # ✅ VALID NAME
+  load_balancer_type = "network"
+  internal           = true
+  subnets            = aws_subnet.app_private[*].id
+
+  tags = {
+    Name = "app-internal-nlb"
+  }
+}
